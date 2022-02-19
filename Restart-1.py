@@ -14,12 +14,13 @@ if problemselection == 1:
         adjacentlength1 = int(input())
         print("Type the second adjacent length of the triangle")
         adjacentlength2 = int(input())
-        hypotenuselength = pow((pow(adjacentlength1,2) + pow(adjacentlength2,2)),0.5)
-        print("This is the length of the hypotenuse:",hypotenuselength)
+        hypotenuselength1 = pow((pow(adjacentlength1,2) + pow(adjacentlength2,2)),0.5)
+        print("This is the length of the hypotenuse:",hypotenuselength1)
     if sideselection == 2:
         print("Type the length of the hypotenuse") 
-        hypotenuselength = int(input())
+        hypotenuselength1 = int(input())
         print("Type the length of the other hypotenuse")
-        print("l")
+        hypotenuselength2 = int(input())
+        
         
         
