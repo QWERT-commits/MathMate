@@ -22,8 +22,8 @@ def pythagoreantherom(sideselection):
         returnmenu()
         
 def mainprogram():  
-    list = ['Press 1 for pythagorean therom']
-    print ('math calculator 0.1')
+    #The main menu of the program
+    list = ['Press 2 for pythagorean therom']
     print ('Press 0 to exit')
     print ("Press 1 to search for what you want :)")
     print ('Press 2 for pythagorean therom')
@@ -33,12 +33,22 @@ def mainprogram():
         exit
     elif problemselection == 1:
         search = input("Enter the text you want to search: ")
+        list.index (search)
+        print (list.index(search[0]))
     elif problemselection == 2:
         print ("Which side do you want to calculate?")
         print ("Press 1 for Hypotenuse, Press 2 for the adjacent/opposite side")
         sideselection = int(input())
         pythagoreantherom (sideselection)
-       
+      
+#On Startup
+print ('''
+ __  __       _   _     __  __       _       
+|  \/  | __ _| |_| |__ |  \/  | __ _| |_ ___ 
+| |\/| |/ _` | __| '_ \| |\/| |/ _` | __/ _ \\
+| |  | | (_| | |_| | | | |  | | (_| | ||  __/
+|_|  |_|\__,_|\__|_| |_|_|  |_|\__,_|\__\___|''')
+print ('Math Calculator v0.2\n')
 mainprogram() 
         
         
