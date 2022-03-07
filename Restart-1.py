@@ -23,19 +23,31 @@ def pythagoreantherom(sideselection):
         
 def mainprogram():  
     #The main menu of the program
-    list = ['Press 2 for pythagorean therom']
+    print ('Math Calculator v0.2')
     print ('Press 0 to exit')
     print ("Press 1 to search for what you want :)")
-    print ('Press 2 for pythagorean therom')
-    problemselection = int(input("Type your selection: "))
-    print ("Your selection is:",problemselection)
-    if problemselection == 0:
+    print ('Press 2 for the geometry section')
+    print ('Press 3 for help')
+    sectionselection = int(input("Type your selection: "))
+    print ("Your selection is:",sectionselection,'\n')
+    if sectionselection == 0:
         exit
-    elif problemselection == 1:
+    elif sectionselection == 1:
         search = input("Enter the text you want to search: ")
         list.index (search)
         print (list.index(search[0]))
-    elif problemselection == 2:
+    elif sectionselection == 2:
+        geometry_section()
+        
+def geometry_section ():
+    print ('Geometry Section: ')
+    print ('Press 0 to return')
+    print ('Press 1 for Pythagorean therom')
+    problemselection = int(input("Type your selection: "))
+    print ("Your selection is:",problemselection,'\n')
+    if problemselection == 0:
+        mainprogram()
+    elif problemselection == 1:
         print ("Which side do you want to calculate?")
         print ("Press 1 for Hypotenuse, Press 2 for the adjacent/opposite side")
         sideselection = int(input())
@@ -47,6 +59,6 @@ print ('''
 |  \/  | __ _| |_| |__ |  \/  | __ _| |_ ___ 
 | |\/| |/ _` | __| '_ \| |\/| |/ _` | __/ _ \\
 | |  | | (_| | |_| | | | |  | | (_| | ||  __/
-|_|  |_|\__,_|\__|_| |_|_|  |_|\__,_|\__\___|''')
-print ('Math Calculator v0.2\n')
+|_|  |_|\__,_|\__|_| |_|_|  |_|\__,_|\__\___|\n''')
+AllEquation = {'Pythagorean therom': '2'}
 mainprogram()
