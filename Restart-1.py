@@ -34,8 +34,7 @@ def mainprogram():
         exit
     elif sectionselection == 1:
         search = input("Enter the text you want to search: ")
-        list.index (search)
-        print (list.index(search[0]))
+        print(next((x for x in Allequation if x["Equation name"] == search), 'Result Not Found'))
     elif sectionselection == 2:
         geometry_section()
         
@@ -60,5 +59,7 @@ print ('''
 | |\/| |/ _` | __| '_ \| |\/| |/ _` | __/ _ \\
 | |  | | (_| | |_| | | | |  | | (_| | ||  __/
 |_|  |_|\__,_|\__|_| |_|_|  |_|\__,_|\__\___|\n''')
-AllEquation = {'Pythagorean therom': '2'}
+Allequation = [
+    {'Equation name': 'Pythagorean therom','section':'Geometry','Serial Number':1},
+]
 mainprogram()
