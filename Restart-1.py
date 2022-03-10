@@ -100,6 +100,6 @@ print ('''
 |_|  |_|\__,_|\__|_| |_|_|  |_|\__,_|\__\___|\n''')
 allequation = [
     {'Equation name': 'Pythagorean therom','section':'Geometry','Serial Number':1},
-    {'Equation name': 'Linear function generator':'Algebra','Serial Number':1}
+    {'Equation name': 'Linear function generator','section': 'Algebra','Serial Number':1}
 ]
 mainprogram()
