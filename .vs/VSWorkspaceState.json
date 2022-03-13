@@ -1,7 +1,7 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\dist"
   ],
-  "SelectedNode": "\\Restart-1.py",
-  "PreviewInSolutionExplorer": false
+  "PreviewInSolutionExplorer": true
 }

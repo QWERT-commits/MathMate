@@ -28,7 +28,7 @@ def help():
     print('List of the problem solver')
 
 def returnmenu():
-    print('Execution completed, returning to homemenu... \n')
+    print('Execution completed, returning to home menu... \n')
     mainprogram()
     
 #Problem solver for the geometry section
@@ -68,13 +68,13 @@ def linearfunctiongenerater():
 def geometry_section ():
     print ('Geometry Section: ')
     print ('Press 0 to return')
-    print ('Press 1 for Pythagorean therom')
+    print ('Press 1 for Pythagorean theorem')
     problemselection = int(input("Type your selection: "))
     print ("Your selection is:",problemselection,'\n')
     if problemselection == 0:
         mainprogram()
     elif problemselection == 1:
-        print ('Pythagorean therom: ')
+        print ('Pythagorean theorem: ')
         print ("Which side do you want to calculate?")
         print ("Press 1 for Hypotenuse, Press 2 for the adjacent/opposite side")
         sideselection = int(input())
@@ -99,7 +99,7 @@ print ('''
 | |  | | (_| | |_| | | | |  | | (_| | ||  __/
 |_|  |_|\__,_|\__|_| |_|_|  |_|\__,_|\__\___|\n''')
 allequation = [
-    {'Equation name': 'Pythagorean therom','section':'Geometry','Serial Number':1},
+    {'Equation name': 'Pythagorean theorem','section':'Geometry','Serial Number':1},
     {'Equation name': 'Linear function generator','section': 'Algebra','Serial Number':1}
 ]
 mainprogram()
