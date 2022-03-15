@@ -1,6 +1,6 @@
 #press i for insert mode
-from random import randint
 from math import sin
+from math import sqrt
 
 #The main menu of the program
 def mainprogram():
@@ -45,6 +45,14 @@ def pythagoreantherom(sideselection):
         hypotenuselength1 = pow((pow(hypotenuselength1,2) - pow(adjacentlength2)),0.5)
         print("This is the length of the other adjacent side:",hypotenuselength1)
         returnmenu()
+        
+def triangleareafromthreesides():
+    Side_1 = int(input('Please type the length of the first side: '))
+    Side_2 = int(input('Please type the length of the second side: '))
+    Side_3 = int(input('Please type the length of the third side: '))
+    Triangle_Area = 0.5 * Side_3 * pow((pow(Side_2,2) - pow((pow(Side_3,2)+pow(Side_2,2)-pow(Side_1,2))/(2 * Side_3),2)),0.5)
+    print('The area of the triangle is:',Triangle_Area)
+    returnmenu()
 
 #Problem solver for the algebra section
 def linearfunctiongenerater():
@@ -65,10 +73,12 @@ def linearfunctiongenerater():
     print('X_Intercept',X_Intercept)
     returnmenu()
         
+#Sections
 def geometry_section ():
     print ('Geometry Section: ')
     print ('Press 0 to return')
     print ('Press 1 for Pythagorean theorem')
+    print ('Press 2 for Triangle area from three sides')
     problemselection = int(input("Type your selection: "))
     print ("Your selection is:",problemselection,'\n')
     if problemselection == 0:
@@ -79,6 +89,9 @@ def geometry_section ():
         print ("Press 1 for Hypotenuse, Press 2 for the adjacent/opposite side")
         sideselection = int(input())
         pythagoreantherom (sideselection)
+    elif problemselection == 2:
+        print ('Triangle area from three sides:')
+        triangleareafromthreesides()
 
 def algebra_section ():
     print ('Algebra Section:')
