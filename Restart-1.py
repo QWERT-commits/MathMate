@@ -16,7 +16,7 @@ def mainprogram():
         exit
     elif sectionselection == 1:
         search = input("Enter the text you want to search: ")
-        print(next((x for x in allequation if x["Equation name"] == search), 'Result Not Found'))
+        print(next((x for x in allequations if x["Equation name"] == search), 'Result Not Found'))
     elif sectionselection == 2:
         geometry_section()
     elif sectionselection == 3:
@@ -25,7 +25,8 @@ def mainprogram():
         help()
 
 def help():
-    print('List of the problem solver')
+    print('List of the problem solver： ')
+    print(allequations)
 
 def returnmenu():
     print('Execution completed, returning to home menu... \n')
@@ -111,7 +112,7 @@ print ('''
 | |\/| |/ _` | __| '_ \| |\/| |/ _` | __/ _ \\
 | |  | | (_| | |_| | | | |  | | (_| | ||  __/
 |_|  |_|\__,_|\__|_| |_|_|  |_|\__,_|\__\___|\n''')
-listOfDicts = [
+allequations = [
      {'Equation name': 'Pythagorean theorem','section': 'Geometry','Serial Number': 1},
      {'Equation name': 'Linear function generator','section': 'Algebra','Serial Number': 1},
      {'Equation name': 'Triangle area from three sides','section': 'Geometry','Serial Number': 2},
