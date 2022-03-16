@@ -111,9 +111,9 @@ print ('''
 | |\/| |/ _` | __| '_ \| |\/| |/ _` | __/ _ \\
 | |  | | (_| | |_| | | | |  | | (_| | ||  __/
 |_|  |_|\__,_|\__|_| |_|_|  |_|\__,_|\__\___|\n''')
-allequation = [
-    {'Equation name': 'Pythagorean theorem','section': 'Geometry','Serial Number': 1},
-    {'Equation name': 'Linear function generator','section': 'Algebra','Serial Number': 1}
-    {'Equation name': 'Triangle area from three sides','section': 'Geometry','Serial Number': 2}
-    ]
+listOfDicts = [
+     {'Equation name': 'Pythagorean theorem','section': 'Geometry','Serial Number': 1},
+     {'Equation name': 'Linear function generator','section': 'Algebra','Serial Number': 1},
+     {'Equation name': 'Triangle area from three sides','section': 'Geometry','Serial Number': 2},
+]
 mainprogram()
