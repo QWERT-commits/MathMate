@@ -35,34 +35,35 @@ def returnmenu():
 #Problem solver for the geometry section
 def pythagoreantherom(sideselection):
     if sideselection == 1:
-        adjacentlength1 = int(input("Type the first adjacent length of the triangle: "))
-        adjacentlength2 = int(input("Type the second adjacent length of the triangle: "))
+        adjacentlength1 = float(input("Type the first adjacent length of the triangle: "))
+        adjacentlength2 = float(input("Type the second adjacent length of the triangle: "))
         hypotenuselength1 = pow((pow(adjacentlength1,2) + pow(adjacentlength2,2)),0.5)
         print("This is the length of the hypotenuse:",hypotenuselength1)
         returnmenu()
     if sideselection == 2: 
-        hypotenuselength1 = int(input("Type the length of the hypotenuse: "))
-        adjacentlength2 = int(input("Type the length of the other hypotenuse: "))
+        hypotenuselength1 = float(input("Type the length of the hypotenuse: "))
+        adjacentlength2 = float(input("Type the length of the other hypotenuse: "))
         hypotenuselength1 = pow((pow(hypotenuselength1,2) - pow(adjacentlength2)),0.5)
         print("This is the length of the other adjacent side:",hypotenuselength1)
         returnmenu()
         
 def triangleareafromthreesides():
-    Side_1 = int(input('Please type the length of the first side: '))
-    Side_2 = int(input('Please type the length of the second side: '))
-    Side_3 = int(input('Please type the length of the third side: '))
+    Side_1 = float(input('Please type the length of the first side: '))
+    Side_2 = float(input('Please type the length of the second side: '))
+    Side_3 = float(input('Please type the length of the third side: '))
     Triangle_Area = 0.5 * Side_3 * pow((pow(Side_2,2) - pow((pow(Side_3,2)+pow(Side_2,2)-pow(Side_1,2))/(2 * Side_3),2)),0.5)
     print('The area of the triangle is:',Triangle_Area)
     returnmenu()
+    #Some results are not yet accurate
 
 #Problem solver for the algebra section
 def linearfunctiongenerater():
     print('Linear function generator: ')
     print("Please type the two set of coordinate points (x1,y1)(x2,y2)")
-    First_Point_X_Value = int(input("Type the x-value of the first point: "))
-    First_Point_Y_Value = int(input("Type the y-value of the first point: "))
-    Second_Point_X_Value = int(input("Type the x-value of the second point: "))
-    Second_Point_Y_Value = int(input("Type the y-value of the second point: "))
+    First_Point_X_Value = float(input("Type the x-value of the first point: "))
+    First_Point_Y_Value = float(input("Type the y-value of the first point: "))
+    Second_Point_X_Value = float(input("Type the x-value of the second point: "))
+    Second_Point_Y_Value = float(input("Type the y-value of the second point: "))
     Slope = (Second_Point_Y_Value - First_Point_Y_Value)/(Second_Point_X_Value - First_Point_X_Value)
     Y_Intercept = ((Second_Point_X_Value * First_Point_Y_Value) - (Second_Point_Y_Value * First_Point_X_Value))/(Second_Point_X_Value - First_Point_X_Value)
     X_Intercept = ((Second_Point_Y_Value * First_Point_X_Value) - (Second_Point_X_Value * First_Point_Y_Value))/(Second_Point_Y_Value - First_Point_Y_Value)
