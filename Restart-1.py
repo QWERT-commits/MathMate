@@ -17,6 +17,7 @@ def mainprogram():
     elif sectionselection == 1:
         search = input("Enter the text you want to search: ")
         print(next((x for x in allequations if x["Equation name"] == search), 'Result Not Found'))
+        returnmenu()
     elif sectionselection == 2:
         geometry_section()
     elif sectionselection == 3:
@@ -48,10 +49,13 @@ def pythagoreantherom(sideselection):
         returnmenu()
         
 def triangleareafromthreesides():
-    Side_1 = float(input('Please type the length of the first side: '))
+    Side_1 = float(input('Please type the longest length among the three sides of the triangle: '))
     Side_2 = float(input('Please type the length of the second side: '))
     Side_3 = float(input('Please type the length of the third side: '))
-    Triangle_Area = 0.5 * Side_3 * pow((pow(Side_2,2) - pow((pow(Side_3,2)+pow(Side_2,2)-pow(Side_1,2))/(2 * Side_3),2)),0.5)
+    if pow(Side_2,2) + pow(Side_3,2) == pow (Side_1,2):
+        Triangle_Area = 0.5 * Side_2 * Side_3
+    else:
+        Triangle_Area = 0.5 * Side_3 * pow((pow(Side_2,2) - pow((pow(Side_3,2)+pow(Side_2,2)-pow(Side_1,2))/(2 * Side_3),2)),0.5)
     print('The area of the triangle is:',Triangle_Area)
     returnmenu()
     #Some results are not yet accurate
