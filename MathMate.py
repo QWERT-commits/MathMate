@@ -12,17 +12,17 @@ def mainprogram():
     print ('Press 4 for help')
     sectionselection = int(input("Type your selection: "))
     print ("Your selection is:",sectionselection,'\n')
-    if sectionselection == 0:
+    if sectionselection is 0:
         exit
-    elif sectionselection == 1:
+    elif sectionselection is 1:
         search = input("Enter the text you want to search: ")
         print(next((x for x in allequations if x["Equation name"] == search), 'Result Not Found'))
         returnmenu()
-    elif sectionselection == 2:
+    elif sectionselection is 2:
         geometry_section()
-    elif sectionselection == 3:
+    elif sectionselection is 3:
         algebra_section()
-    elif sectionselection == 4:
+    elif sectionselection is 4:
         help()
 
 def help():
@@ -34,21 +34,21 @@ def returnmenu():
     mainprogram()
     
 #Problem solver for the geometry section
-def pythagoreantherom(sideselection):
-    if sideselection == 1:
+def pythagorean_therom(sideselection):
+    if sideselection is 1:
         adjacentlength1 = float(input("Type the first adjacent length of the triangle: "))
         adjacentlength2 = float(input("Type the second adjacent length of the triangle: "))
         hypotenuselength1 = pow((pow(adjacentlength1,2) + pow(adjacentlength2,2)),0.5)
         print("This is the length of the hypotenuse:",hypotenuselength1)
         returnmenu()
-    if sideselection == 2: 
+    if sideselection is 2: 
         hypotenuselength1 = float(input("Type the length of the hypotenuse: "))
         adjacentlength2 = float(input("Type the length of the other hypotenuse: "))
         hypotenuselength1 = pow((pow(hypotenuselength1,2) - pow(adjacentlength2)),0.5)
         print("This is the length of the other adjacent side:",hypotenuselength1)
         returnmenu()
         
-def triangleareafromthreesides():
+def triangle_area_from_three_sides():
     Side_1 = float(input('Please type the longest length among the three sides of the triangle: '))
     Side_2 = float(input('Please type the length of the second side: '))
     Side_3 = float(input('Please type the length of the third side: '))
@@ -61,7 +61,7 @@ def triangleareafromthreesides():
     #Some results are not yet accurate
 
 #Problem solver for the algebra section
-def linearfunctiongenerater():
+def linear_function_generater():
     print('Linear function generator: ')
     print("Please type the two set of coordinate points (x1,y1)(x2,y2)")
     First_Point_X_Value = float(input("Type the x-value of the first point: "))
@@ -78,6 +78,18 @@ def linearfunctiongenerater():
     print('Y_Intercept',Y_Intercept)
     print('X_Intercept',X_Intercept)
     returnmenu()
+    
+def quadratic_equation_calculator ():
+    print('Quadratic Equation Calculator')
+    print('Please input the three value of the standard form of quadratic equation:\na * x² + b * x + c = 0')
+    a = int(input('Type the value of a: '))
+    b = int(input('Type the value of b: '))
+    c = int(input('Type the value of c: '))
+    Solution_1 = (-b+pow(pow(b,2)+4*a*c,0.5))/2*a
+    Solution_2 = (-b-pow(pow(b,2)+4*a*c,0.5))/2*a
+    print ('The first solution is: ',Solution_1)
+    print ('The second solution is: ',Solution_2)
+    returnmenu()
         
 #Sections
 def geometry_section ():
@@ -87,28 +99,31 @@ def geometry_section ():
     print ('Press 2 for Triangle area from three sides')
     problemselection = int(input("Type your selection: "))
     print ("Your selection is:",problemselection,'\n')
-    if problemselection == 0:
+    if problemselection is 0:
         mainprogram()
-    elif problemselection == 1:
+    elif problemselection is 1:
         print ('Pythagorean theorem: ')
         print ("Which side do you want to calculate?")
         print ("Press 1 for Hypotenuse, Press 2 for the adjacent/opposite side")
         sideselection = int(input())
-        pythagoreantherom (sideselection)
+        pythagorean_therom (sideselection)
     elif problemselection == 2:
         print ('Triangle area from three sides:')
-        triangleareafromthreesides()
+        triangle_area_from_three_sides()
 
 def algebra_section ():
     print ('Algebra Section:')
     print ('Press 0 to return')
     print ('Press 1 for linear function generator')
+    print ('Press 2 for quadratic equation calculator')
     problemselection = int(input("Type your selection: "))
     print ("Your selection is:",problemselection,'\n')
-    if problemselection == 0:
+    if problemselection is 0:
         mainprogram()
-    elif problemselection ==1:
-        linearfunctiongenerater()
+    elif problemselection is 1:
+        linear_function_generater()
+    elif problemselection is 2:
+        quadratic_equation_calculator()
       
 #On Startup
 print ('''
