@@ -136,5 +136,6 @@ allequations = [
      {'Equation name': 'Pythagorean theorem','section': 'Geometry','Serial Number': 1},
      {'Equation name': 'Linear function generator','section': 'Algebra','Serial Number': 1},
      {'Equation name': 'Triangle area from three sides','section': 'Geometry','Serial Number': 2},
+     {'Equation name': 'Quadratic equation calculator','section': 'Algebra', 'Serial Number': 2}
 ]
 mainprogram()
