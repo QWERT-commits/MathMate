@@ -1,6 +1,7 @@
 #press i for insert mode
 from math import sin
 from math import sqrt
+import sys
 
 #The main menu of the program
 def mainprogram():
@@ -13,7 +14,7 @@ def mainprogram():
     sectionselection = int(input("Type your selection: "))
     print ("Your selection is:",sectionselection,'\n')
     if sectionselection is 0:
-        exit
+        sys.exit(0)
     elif sectionselection is 1:
         search = input("Enter the text you want to search: ")
         print(next((x for x in allequations if x["Equation name"] == search), 'Result Not Found'))
@@ -28,6 +29,7 @@ def mainprogram():
 def help():
     print('List of the problem solver： ')
     print(allequations)
+    returnmenu()
 
 def returnmenu():
     print('Execution completed, returning to home menu... \n')
