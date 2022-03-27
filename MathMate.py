@@ -1,4 +1,3 @@
-#press i for insert mode
 from math import sin
 from math import sqrt
 import sys
@@ -11,24 +10,41 @@ def mainprogram():
     print ('Press 2 for the geometry section')
     print ('Press 3 for the algebra section')
     print ('Press 4 for help')
-    sectionselection = int(input("Type your selection: "))
-    print ("Your selection is:",sectionselection,'\n')
-    if sectionselection is 0:
-        sys.exit(0)
-    elif sectionselection is 1:
-        search = input("Enter the text you want to search: ")
-        print(next((x for x in allequations if x["Equation name"] == search), 'Result Not Found'))
-        returnmenu()
-    elif sectionselection is 2:
-        geometry_section()
-    elif sectionselection is 3:
-        algebra_section()
-    elif sectionselection is 4:
-        help()
+    try:
+        sectionselection = int(input("Type your selection: "))
+        print ("Your selection is:",sectionselection,'\n')
+        if sectionselection is 0:
+            sys.exit(0)
+        elif sectionselection is 1:
+            search()
+        elif sectionselection is 2:
+            geometry_section()
+        elif sectionselection is 3:
+            algebra_section()
+        elif sectionselection is 4:
+            help()
+    except:
+        print ('Unknown error, please check if you enter the correct input!\n')
+        mainprogram()
+
+def search():
+    search = input("Enter the text you want to search: ")
+    print(next((x for x in allequations if x['Equation name'] == search), \
+        "No results has been found regarding to the '" + search + "' equation"))
+    print(next((x for x in allequations if x['Section'] == search), \
+        "No results has been found regarding to the '" + search + "' section"))
+    print(next((x for x in allequations if x['Serial number'] == int(search)), \
+        "No results has been found regarding to the serial number '" + search + "'" ))
+    returnmenu()  
 
 def help():
     print('List of the problem solver： ')
-    print(allequations)
+    for i in allequations: 
+        if i['Section'] == 'Geometry' :
+            print (i)
+    for i in allequations:
+        if i['Section'] == 'Algebra' :
+            print (i)
     returnmenu()
 
 def returnmenu():
@@ -84,13 +100,23 @@ def linear_function_generater():
 def quadratic_equation_calculator ():
     print('Quadratic Equation Calculator')
     print('Please input the three value of the standard form of quadratic equation:\na * x² + b * x + c = 0')
-    a = int(input('Type the value of a: '))
-    b = int(input('Type the value of b: '))
-    c = int(input('Type the value of c: '))
+    a = float(input('Type the value of a: '))
+    b = float(input('Type the value of b: '))
+    c = float(input('Type the value of c: '))
     Solution_1 = (-b+pow(pow(b,2)+4*a*c,0.5))/2*a
     Solution_2 = (-b-pow(pow(b,2)+4*a*c,0.5))/2*a
     print ('The first solution is: ',Solution_1)
     print ('The second solution is: ',Solution_2)
+    returnmenu()
+    
+def arithmetic_progression_calculator():
+    print('Arithmetic Progression Calculator')
+    print("Please input the three value of the standard form of arithmetic progression calculator:\n(a + 0*b) + (a + 1*b) +...+ (a + n*b)")
+    a = float(input('Please type the value of a: '))
+    b = float(input('Please type the value of b: '))
+    n = float(input('Please type the value of n: '))
+    sum = (1+n)*(a+(n*b*0.5))
+    print ('The sum of this sequence is: ',sum)
     returnmenu()
         
 #Sections
@@ -118,6 +144,7 @@ def algebra_section ():
     print ('Press 0 to return')
     print ('Press 1 for linear function generator')
     print ('Press 2 for quadratic equation calculator')
+    print ('Press 3 for arithmetic progression calculator')
     problemselection = int(input("Type your selection: "))
     print ("Your selection is:",problemselection,'\n')
     if problemselection is 0:
@@ -126,6 +153,8 @@ def algebra_section ():
         linear_function_generater()
     elif problemselection is 2:
         quadratic_equation_calculator()
+    elif problemselection is 3:
+        arithmetic_progression_calculator()
       
 #On Startup
 print ('''
@@ -135,9 +164,9 @@ print ('''
 | |  | | (_| | |_| | | | |  | | (_| | ||  __/
 |_|  |_|\__,_|\__|_| |_|_|  |_|\__,_|\__\___|\n''')
 allequations = [
-     {'Equation name': 'Pythagorean theorem','section': 'Geometry','Serial Number': 1},
-     {'Equation name': 'Linear function generator','section': 'Algebra','Serial Number': 1},
-     {'Equation name': 'Triangle area from three sides','section': 'Geometry','Serial Number': 2},
-     {'Equation name': 'Quadratic equation calculator','section': 'Algebra', 'Serial Number': 2}
+     {'Equation name': 'Pythagorean theorem','Section': 'Geometry','Serial number': 1},
+     {'Equation name': 'Linear function generator','Section': 'Algebra','Serial number': 1},
+     {'Equation name': 'Triangle area from three sides','Section': 'Geometry','Serial number': 2},
+     {'Equation name': 'Quadratic equation calculator','Section': 'Algebra', 'Serial number': 2}
 ]
 mainprogram()
