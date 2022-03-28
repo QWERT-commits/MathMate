@@ -29,12 +29,37 @@ def mainprogram():
 
 def search():
     search = input("Enter the text you want to search: ")
-    print(next((x for x in allequations if x['Equation name'] == search), \
-        "No results has been found regarding to the '" + search + "' equation"))
-    print(next((x for x in allequations if x['Section'] == search), \
-        "No results has been found regarding to the '" + search + "' section"))
-    print(next((x for x in allequations if x['Serial number'] == int(search)), \
-        "No results has been found regarding to the serial number '" + search + "'" ))
+    equation_search_result = False
+    section_search_result = False
+    serial_number_search_result = False
+    print (' ')
+    print ("These are the search results for equation '" + search + "':")
+    for i in allequations: 
+        if i['Equation name'] == search :
+            print (i)
+            equation_search_result = True
+    if equation_search_result is False:
+        print ("No results has been found regarding to the '" + search + "' equation\n")
+    else:
+        print (' ')
+    print ("These are the search results for section '" + search + "':")
+    for i in allequations: 
+        if i['Section'] == search :
+            print (i)
+            section_search_result = True
+    if section_search_result is False:
+        print ("No results has been found regarding to the '" + search + "' section\n")
+    else:
+        print (' ')
+    print ("These are the search results for serial number '" + search + "':")
+    for i in allequations:
+        if search.isdigit() == True and i['Serial number'] == int(search):
+            print (i)
+            serial_number_search_result = True
+    if serial_number_search_result is False:
+        print ("No results has been found regarding to the serial number '" + search + "'\n")
+    else:
+        print (' ')
     returnmenu()  
 
 def help():
@@ -163,10 +188,12 @@ print ('''
 | |\/| |/ _` | __| '_ \| |\/| |/ _` | __/ _ \\
 | |  | | (_| | |_| | | | |  | | (_| | ||  __/
 |_|  |_|\__,_|\__|_| |_|_|  |_|\__,_|\__\___|\n''')
+#Add a comma behind each dictionary and ' is not the same as ‘！！！
 allequations = [
      {'Equation name': 'Pythagorean theorem','Section': 'Geometry','Serial number': 1},
      {'Equation name': 'Linear function generator','Section': 'Algebra','Serial number': 1},
      {'Equation name': 'Triangle area from three sides','Section': 'Geometry','Serial number': 2},
-     {'Equation name': 'Quadratic equation calculator','Section': 'Algebra', 'Serial number': 2}
+     {'Equation name': 'Quadratic equation calculator','Section': 'Algebra', 'Serial number': 2},
+     {'Equation name': 'Arithmetic progression calculator','Section': 'Algebra', 'Serial number': 3}
 ]
 mainprogram()
