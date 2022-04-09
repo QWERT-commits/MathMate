@@ -24,7 +24,7 @@ def mainprogram():
         elif sectionselection is 4:
             help()
     except:
-        print ('Unknown error, please check if you enter the correct input!\n')
+        print ("Unknown error, please check if you enter the correct input as requested!\n")
         mainprogram()
 
 def search():
@@ -196,4 +196,5 @@ allequations = [
      {'Equation name': 'Quadratic equation calculator','Section': 'Algebra', 'Serial number': 2},
      {'Equation name': 'Arithmetic progression calculator','Section': 'Algebra', 'Serial number': 3}
 ]
+f = open('output.txt', 'w')
 mainprogram()
