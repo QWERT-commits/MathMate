@@ -196,5 +196,4 @@ allequations = [
      {'Equation name': 'Quadratic equation calculator','Section': 'Algebra', 'Serial number': 2},
      {'Equation name': 'Arithmetic progression calculator','Section': 'Algebra', 'Serial number': 3}
 ]
-f = open('output.txt', 'w')
 mainprogram()
