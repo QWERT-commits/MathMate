@@ -3,29 +3,30 @@ from math import sqrt
 import sys
 
 #The main menu of the program
-def mainprogram():
+def main_program():
     print ('Math Calculator v0.2')
-    print ('Press 0 to exit')
-    print ("Press 1 to search for what you want :)")
+    print ('Press 0 for exit')
+    print ("Press 1 for search")
     print ('Press 2 for the geometry section')
     print ('Press 3 for the algebra section')
     print ('Press 4 for help')
-    try:
-        sectionselection = int(input("Type your selection: "))
-        print ("Your selection is:",sectionselection,'\n')
-        if sectionselection is 0:
-            sys.exit(0)
-        elif sectionselection is 1:
-            search()
-        elif sectionselection is 2:
-            geometry_section()
-        elif sectionselection is 3:
-            algebra_section()
-        elif sectionselection is 4:
-            help()
-    except:
-        print ("Unknown error, please check if you enter the correct input as requested!\n")
-        mainprogram()
+#    try:
+    section_selection = int(input("Type your selection: "))
+    print ("Your selection is:",section_selection,'\n')
+    current_menu_locator(section_selection,-1)
+    if section_selection == 0:
+        sys.exit(0)
+    elif section_selection == 1:
+        search()
+    elif section_selection == 2:
+        geometry_section()
+    elif section_selection == 3:
+        algebra_section()
+    elif section_selection == 4:
+        help()
+#    except:
+#        print ("\nUnknown error, please check if you enter the correct input as requested!\n")
+#        main_program()
 
 def search():
     search = input("Enter the text you want to search: ")
@@ -34,7 +35,7 @@ def search():
     serial_number_search_result = False
     print (' ')
     print ("These are the search results for equation '" + search + "':")
-    for i in allequations: 
+    for i in all_equations: 
         if i['Equation name'] == search :
             print (i)
             equation_search_result = True
@@ -43,7 +44,7 @@ def search():
     else:
         print (' ')
     print ("These are the search results for section '" + search + "':")
-    for i in allequations: 
+    for i in all_equations: 
         if i['Section'] == search :
             print (i)
             section_search_result = True
@@ -52,7 +53,7 @@ def search():
     else:
         print (' ')
     print ("These are the search results for serial number '" + search + "':")
-    for i in allequations:
+    for i in all_equations:
         if search.isdigit() == True and i['Serial number'] == int(search):
             print (i)
             serial_number_search_result = True
@@ -60,36 +61,57 @@ def search():
         print ("No results has been found regarding to the serial number '" + search + "'\n")
     else:
         print (' ')
-    returnmenu()  
+    return_to_menu()  
 
 def help():
     print('List of the problem solver： ')
-    for i in allequations: 
+    for i in all_equations: 
         if i['Section'] == 'Geometry' :
             print (i)
-    for i in allequations:
+    for i in all_equations:
         if i['Section'] == 'Algebra' :
             print (i)
-    returnmenu()
+    return_to_menu()
 
-def returnmenu():
-    print('Execution completed, returning to home menu... \n')
-    mainprogram()
+def return_to_menu():
+    global actual_menu_number
+    actual_menu_number = menu_number_save - 1
+    print('Execution completed, returning to',get_key_from_value(actual_menu_number),'... \n')
+    if menu_number_save == 2:
+        geometry_section()
+    elif menu_number_save == 3:
+        algebra_section()
+    else:
+        main_program()
+
+def get_key_from_value(val):
+    for key, value in menu_number.items():
+         if val == value:
+             return key
+    return "Main menu"
+    
+def current_menu_locator(menu_number_static,submenu_number_static):
+    global menu_number_save
+    global submenu_number_save
+    if menu_number_static != -1:
+        menu_number_save = menu_number_static
+    if submenu_number_static != -1:
+        submenu_number_save = submenu_number_static
     
 #Problem solver for the geometry section
-def pythagorean_therom(sideselection):
-    if sideselection is 1:
-        adjacentlength1 = float(input("Type the first adjacent length of the triangle: "))
-        adjacentlength2 = float(input("Type the second adjacent length of the triangle: "))
-        hypotenuselength1 = pow((pow(adjacentlength1,2) + pow(adjacentlength2,2)),0.5)
-        print("This is the length of the hypotenuse:",hypotenuselength1)
-        returnmenu()
-    if sideselection is 2: 
-        hypotenuselength1 = float(input("Type the length of the hypotenuse: "))
-        adjacentlength2 = float(input("Type the length of the other hypotenuse: "))
-        hypotenuselength1 = pow((pow(hypotenuselength1,2) - pow(adjacentlength2)),0.5)
-        print("This is the length of the other adjacent side:",hypotenuselength1)
-        returnmenu()
+def pythagorean_therom(side_selection):
+    if side_selection == 1:
+        adjacent_length_1 = float(input("Type the first adjacent length of the triangle: "))
+        adjacent_length_2 = float(input("Type the second adjacent length of the triangle: "))
+        hypotenuse_length_1 = pow((pow(adjacent_length_1,2) + pow(adjacent_length_2,2)),0.5)
+        print("This is the length of the hypotenuse:",hypotenuse_length_1)
+        return_to_menu()
+    if side_selection == 2: 
+        hypotenuse_length_1 = float(input("Type the length of the hypotenuse: "))
+        adjacent_length_2 = float(input("Type the length of the other hypotenuse: "))
+        hypotenuse_length_1 = pow((pow(hypotenuse_length_1,2) - pow(adjacent_length_2)),0.5)
+        print("This is the length of the other adjacent side:",hypotenuse_length_1)
+        return_to_menu()
         
 def triangle_area_from_three_sides():
     Side_1 = float(input('Please type the longest length among the three sides of the triangle: '))
@@ -100,7 +122,7 @@ def triangle_area_from_three_sides():
     else:
         Triangle_Area = 0.5 * Side_3 * pow((pow(Side_2,2) - pow((pow(Side_3,2)+pow(Side_2,2)-pow(Side_1,2))/(2 * Side_3),2)),0.5)
     print('The area of the triangle is:',Triangle_Area)
-    returnmenu()
+    return_to_menu()
     #Some results are not yet accurate
 
 #Problem solver for the algebra section
@@ -120,7 +142,17 @@ def linear_function_generater():
         print('Full linear equation:',"y = x * (",Slope,") -",abs(Y_Intercept))
     print('Y_Intercept',Y_Intercept)
     print('X_Intercept',X_Intercept)
-    returnmenu()
+    return_to_menu()
+    
+def arithmetic_progression_calculator():
+    print('Arithmetic Progression Calculator')
+    print("Please input the three value of the standard form of arithmetic progression calculator:\n(a + 0*b) + (a + 1*b) +...+ (a + n*b)")
+    a = float(input('Please type the value of a: '))
+    b = float(input('Please type the value of b: '))
+    n = float(input('Please type the value of n: '))
+    sum = (1+n)*(a+(n*b*0.5))
+    print ('The sum of this sequence is: ',sum)
+    return_to_menu()
     
 def quadratic_equation_calculator ():
     print('Quadratic Equation Calculator')
@@ -132,17 +164,7 @@ def quadratic_equation_calculator ():
     Solution_2 = (-b-pow(pow(b,2)+4*a*c,0.5))/2*a
     print ('The first solution is: ',Solution_1)
     print ('The second solution is: ',Solution_2)
-    returnmenu()
-    
-def arithmetic_progression_calculator():
-    print('Arithmetic Progression Calculator')
-    print("Please input the three value of the standard form of arithmetic progression calculator:\n(a + 0*b) + (a + 1*b) +...+ (a + n*b)")
-    a = float(input('Please type the value of a: '))
-    b = float(input('Please type the value of b: '))
-    n = float(input('Please type the value of n: '))
-    sum = (1+n)*(a+(n*b*0.5))
-    print ('The sum of this sequence is: ',sum)
-    returnmenu()
+    return_to_menu()
         
 #Sections
 def geometry_section ():
@@ -150,17 +172,17 @@ def geometry_section ():
     print ('Press 0 to return')
     print ('Press 1 for Pythagorean theorem')
     print ('Press 2 for Triangle area from three sides')
-    problemselection = int(input("Type your selection: "))
-    print ("Your selection is:",problemselection,'\n')
-    if problemselection is 0:
-        mainprogram()
-    elif problemselection is 1:
+    problem_selection = int(input("Type your selection: "))
+    print ("Your selection is:",problem_selection,'\n')
+    if problem_selection == 0:
+        main_program()
+    elif problem_selection == 1:
         print ('Pythagorean theorem: ')
         print ("Which side do you want to calculate?")
         print ("Press 1 for Hypotenuse, Press 2 for the adjacent/opposite side")
-        sideselection = int(input())
-        pythagorean_therom (sideselection)
-    elif problemselection == 2:
+        side_selection = int(input())
+        pythagorean_therom (side_selection)
+    elif problem_selection == 2:
         print ('Triangle area from three sides:')
         triangle_area_from_three_sides()
 
@@ -168,18 +190,18 @@ def algebra_section ():
     print ('Algebra Section:')
     print ('Press 0 to return')
     print ('Press 1 for linear function generator')
-    print ('Press 2 for quadratic equation calculator')
-    print ('Press 3 for arithmetic progression calculator')
-    problemselection = int(input("Type your selection: "))
-    print ("Your selection is:",problemselection,'\n')
-    if problemselection is 0:
-        mainprogram()
-    elif problemselection is 1:
+    print ('Press 2 for arithmetic progression calculator')
+    print ('Press 3 for quadratic equation calculator')
+    problem_selection = int(input("Type your selection: "))
+    print ("Your selection is:",problem_selection,'\n')
+    if problem_selection == 0:
+        main_program()
+    elif problem_selection == 1:
         linear_function_generater()
-    elif problemselection is 2:
-        quadratic_equation_calculator()
-    elif problemselection is 3:
+    elif problem_selection == 2:
         arithmetic_progression_calculator()
+    elif problem_selection == 3:
+        quadratic_equation_calculator()
       
 #On Startup
 print ('''
@@ -188,12 +210,16 @@ print ('''
 | |\/| |/ _` | __| '_ \| |\/| |/ _` | __/ _ \\
 | |  | | (_| | |_| | | | |  | | (_| | ||  __/
 |_|  |_|\__,_|\__|_| |_|_|  |_|\__,_|\__\___|\n''')
-#Add a comma behind each dictionary and ' is not the same as ‘！！！
-allequations = [
+#Add a comma behind each dictionary (except the last one) and ' is not the same as ‘！！！
+all_equations = [
      {'Equation name': 'Pythagorean theorem','Section': 'Geometry','Serial number': 1},
      {'Equation name': 'Linear function generator','Section': 'Algebra','Serial number': 1},
      {'Equation name': 'Triangle area from three sides','Section': 'Geometry','Serial number': 2},
      {'Equation name': 'Quadratic equation calculator','Section': 'Algebra', 'Serial number': 2},
      {'Equation name': 'Arithmetic progression calculator','Section': 'Algebra', 'Serial number': 3}
 ]
-mainprogram()
+menu_number = {'Geometry section': 1 , 'Algebra section': 2}
+#Submenu Number : 
+current_menu = 0
+current_submenu = 0
+main_program()
