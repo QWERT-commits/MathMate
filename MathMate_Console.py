@@ -1,6 +1,7 @@
-from math import sin
-from math import sqrt
+from pynput.keyboard import Key, Listener
+import math
 import sys
+#Module used: math | pynput
 
 #The main menu of the program
 def main_program():
@@ -12,10 +13,11 @@ def main_program():
     print ('Press 4 for help')
 #    try:
     section_selection = int(input("Type your selection: "))
-    print ("Your selection is:",section_selection,'\n')
+#    print ("Your selection is:",section_selection,'\n')
+    print ('\n')
     current_menu_locator(section_selection,-1)
     if section_selection == 0:
-        sys.exit(0)
+        quit()
     elif section_selection == 1:
         search()
     elif section_selection == 2:
@@ -23,7 +25,7 @@ def main_program():
     elif section_selection == 3:
         algebra_section()
     elif section_selection == 4:
-        help()
+        help() 
 #    except:
 #        print ("\nUnknown error, please check if you enter the correct input as requested!\n")
 #        main_program()
@@ -99,7 +101,7 @@ def current_menu_locator(menu_number_static,submenu_number_static):
         submenu_number_save = submenu_number_static
     
 #Problem solver for the geometry section
-def pythagorean_therom(side_selection):
+def pythagorean_theorem(side_selection):
     if side_selection == 1:
         adjacent_length_1 = float(input("Type the first adjacent length of the triangle: "))
         adjacent_length_2 = float(input("Type the second adjacent length of the triangle: "))
@@ -126,7 +128,7 @@ def triangle_area_from_three_sides():
     #Some results are not yet accurate
 
 #Problem solver for the algebra section
-def linear_function_generater():
+def linear_function_generator():
     print('Linear function generator: ')
     print("Please type the two set of coordinate points (x1,y1)(x2,y2)")
     First_Point_X_Value = float(input("Type the x-value of the first point: "))
@@ -151,7 +153,7 @@ def arithmetic_progression_calculator():
     b = float(input('Please type the value of b: '))
     n = float(input('Please type the value of n: '))
     sum = (1+n)*(a+(n*b*0.5))
-    print ('The sum of this sequence is: ',sum)
+    print('The sum of this sequence is: ',sum)
     return_to_menu()
     
 def quadratic_equation_calculator ():
@@ -165,7 +167,25 @@ def quadratic_equation_calculator ():
     print ('The first solution is: ',Solution_1)
     print ('The second solution is: ',Solution_2)
     return_to_menu()
-        
+    
+def linear_function_rotation():
+    print('Linear Function Rotation')
+    print('Please input the three value of the standard form of linear equation:\ny = a * x + b')
+    a = float(input('Type the value of a: '))
+    b = float(input('Type the value of b: '))
+    print('Please input the point of rotation')
+    Rotation_Point_X_Value = float(input("Type the x-value of the rotation point: "))
+    Rotation_Point_Y_Value = float(input("Type the y-value of the rotation point: "))
+    Rotation_Degree = float(input("Please input the degree of rotation (counter-clockwise): "))
+    Tangent_Function = math.ceil (math.atan(a))
+    Tangent_Outcome = Tangent_Function+Rotation_Degree
+    Tangent_Result = math.floor (math.tan(Tangent_Outcome))
+    Y_Intercept_Final = Rotation_Point_Y_Value - Tangent_Result * Rotation_Point_X_Value
+    print ("Full Linear Equation (Show tan): y = tan(", Tangent_Outcome, ") * x + ", Rotation_Point_Y_Value, " - tan(", Tangent_Outcome,") * ",Rotation_Point_X_Value)
+    print ("Full Linear Equation (Only numbers): y = ",Tangent_Result, " * x + ", Y_Intercept_Final)
+    a = 0
+    return_to_menu()
+
 #Sections
 def geometry_section ():
     print ('Geometry Section: ')
@@ -181,7 +201,7 @@ def geometry_section ():
         print ("Which side do you want to calculate?")
         print ("Press 1 for Hypotenuse, Press 2 for the adjacent/opposite side")
         side_selection = int(input())
-        pythagorean_therom (side_selection)
+        pythagorean_theorem (side_selection)
     elif problem_selection == 2:
         print ('Triangle area from three sides:')
         triangle_area_from_three_sides()
@@ -192,16 +212,19 @@ def algebra_section ():
     print ('Press 1 for linear function generator')
     print ('Press 2 for arithmetic progression calculator')
     print ('Press 3 for quadratic equation calculator')
+    print ('Press 4 for linear function rotation')
     problem_selection = int(input("Type your selection: "))
     print ("Your selection is:",problem_selection,'\n')
     if problem_selection == 0:
         main_program()
     elif problem_selection == 1:
-        linear_function_generater()
+        linear_function_generator()
     elif problem_selection == 2:
         arithmetic_progression_calculator()
     elif problem_selection == 3:
         quadratic_equation_calculator()
+    elif problem_selection == 4:
+        linear_function_rotation()
       
 #On Startup
 print ('''
@@ -216,10 +239,13 @@ all_equations = [
      {'Equation name': 'Linear function generator','Section': 'Algebra','Serial number': 1},
      {'Equation name': 'Triangle area from three sides','Section': 'Geometry','Serial number': 2},
      {'Equation name': 'Quadratic equation calculator','Section': 'Algebra', 'Serial number': 2},
-     {'Equation name': 'Arithmetic progression calculator','Section': 'Algebra', 'Serial number': 3}
+     {'Equation name': 'Arithmetic progression calculator','Section': 'Algebra', 'Serial number': 3},
+     {'Equation name': 'Linear function rotation', 'Section': 'Algebra', 'Serial number': 4}
 ]
 menu_number = {'Geometry section': 1 , 'Algebra section': 2}
 #Submenu Number : 
 current_menu = 0
 current_submenu = 0
 main_program()
+
+#Keyboard Input Monitor
