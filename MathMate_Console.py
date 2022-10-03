@@ -5,7 +5,7 @@ import sys
 
 #The main menu of the program
 def main_program():
-    print ('Math Calculator v0.2')
+    print ('Math Calculator v0.6')
     print ('Press 0 for exit')
     print ("Press 1 for search")
     print ('Press 2 for the geometry section')
@@ -130,7 +130,7 @@ def triangle_area_from_three_sides():
 #Problem solver for the algebra section
 def linear_function_generator():
     print('Linear function generator: ')
-    print("Please type the two set of coordinate points (x1,y1)(x2,y2)")
+    print("Please type the two set of coordinate points (x1,y1),(x2,y2)")
     First_Point_X_Value = float(input("Type the x-value of the first point: "))
     First_Point_Y_Value = float(input("Type the y-value of the first point: "))
     Second_Point_X_Value = float(input("Type the x-value of the second point: "))
@@ -144,6 +144,10 @@ def linear_function_generator():
         print('Full linear equation:',"y = x * (",Slope,") -",abs(Y_Intercept))
     print('Y_Intercept',Y_Intercept)
     print('X_Intercept',X_Intercept)
+    First_Point_X_Value = 0
+    First_Point_Y_Value = 0
+    Second_Point_X_Value = 0
+    Second_Point_Y_Value = 0
     return_to_menu()
     
 def arithmetic_progression_calculator():
@@ -184,6 +188,31 @@ def linear_function_rotation():
     print ("Full Linear Equation (Show tan): y = tan(", Tangent_Outcome, ") * x + ", Rotation_Point_Y_Value, " - tan(", Tangent_Outcome,") * ",Rotation_Point_X_Value)
     print ("Full Linear Equation (Only numbers): y = ",Tangent_Result, " * x + ", Y_Intercept_Final)
     a = 0
+    b = 0
+    return_to_menu()
+    
+def quadratic_function_generator():
+    print('Quadratic Function Generator')
+    print("Please type the three set of coordinate points (x1,y1),(x2,y2),(x3,y3)")
+    First_Point_X_Value = float(input("Type the x-value of the first point: "))
+    First_Point_Y_Value = float(input("Type the y-value of the first point: "))
+    Second_Point_X_Value = float(input("Type the x-value of the second point: "))
+    Second_Point_Y_Value = float(input("Type the y-value of the second point: "))
+    Third_Point_X_Value = float(input("Type the x-value of the third point: "))
+    Third_Point_Y_Value = float(input("Type the y-value of the third point: "))
+    Calculation_Temp_1 = pow(Third_Point_X_Value,2) - pow(Second_Point_X_Value,2)
+    Calculation_Temp_2 = pow(Second_Point_X_Value,2) - pow(First_Point_X_Value,2)
+    Calculation_Temp_3 = Third_Point_X_Value - Second_Point_X_Value
+    Calculation_Temp_4 = Second_Point_X_Value - First_Point_X_Value
+    Calculation_Temp_5 = Third_Point_Y_Value - Second_Point_Y_Value
+    Calculation_Temp_6 = Second_Point_Y_Value - First_Point_Y_Value
+    a = ((Calculation_Temp_5 * Calculation_Temp_4) - (Calculation_Temp_6 * Calculation_Temp_3))/((Calculation_Temp_1 * Calculation_Temp_4 - Calculation_Temp_2 * Calculation_Temp_3))
+    b = ((Calculation_Temp_5 * Calculation_Temp_2) - (Calculation_Temp_6 * Calculation_Temp_1))/((Calculation_Temp_3 * Calculation_Temp_2 - Calculation_Temp_4 * Calculation_Temp_1))
+    c = First_Point_Y_Value - (a * pow(First_Point_X_Value,2)) - (b * First_Point_X_Value)
+    print ('Full Quadratic Function: ', "y = (",a,") * x^2 + (",b,") * x + (",c,")")
+    Vertex_X_Value = (-1 * b)/(2*a)
+    Vertex_Y_Value = (a * pow(Vertex_X_Value,2)) + (b * Vertex_X_Value) + c
+    print ("Vertex location: ",Vertex_X_Value,",",Vertex_Y_Value)
     return_to_menu()
 
 #Sections
@@ -213,6 +242,7 @@ def algebra_section ():
     print ('Press 2 for arithmetic progression calculator')
     print ('Press 3 for quadratic equation calculator')
     print ('Press 4 for linear function rotation')
+    print ('Press 5 for quadratic function generator')
     problem_selection = int(input("Type your selection: "))
     print ("Your selection is:",problem_selection,'\n')
     if problem_selection == 0:
@@ -225,6 +255,8 @@ def algebra_section ():
         quadratic_equation_calculator()
     elif problem_selection == 4:
         linear_function_rotation()
+    elif problem_selection == 5:
+        quadratic_function_generator()
       
 #On Startup
 print ('''
@@ -240,7 +272,8 @@ all_equations = [
      {'Equation name': 'Triangle area from three sides','Section': 'Geometry','Serial number': 2},
      {'Equation name': 'Quadratic equation calculator','Section': 'Algebra', 'Serial number': 2},
      {'Equation name': 'Arithmetic progression calculator','Section': 'Algebra', 'Serial number': 3},
-     {'Equation name': 'Linear function rotation', 'Section': 'Algebra', 'Serial number': 4}
+     {'Equation name': 'Linear function rotation', 'Section': 'Algebra', 'Serial number': 4},
+     {'Equation name': 'Quadratic function generator', 'Section': 'Algebra', 'Serial number': 5}
 ]
 menu_number = {'Geometry section': 1 , 'Algebra section': 2}
 #Submenu Number : 
@@ -248,4 +281,4 @@ current_menu = 0
 current_submenu = 0
 main_program()
 
-#Keyboard Input Monitor
+#Keyboard Input Monitor 1145.14
