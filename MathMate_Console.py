@@ -280,6 +280,3 @@ menu_number = {'Geometry section': 1 , 'Algebra section': 2}
 current_menu = 0
 current_submenu = 0
 main_program()
-
-#Keyboard Input Monitor 1145.14
-#lololol
