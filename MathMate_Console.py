@@ -1,16 +1,18 @@
-from pynput.keyboard import Key, Listener
 import math
 import sys
+import numpy as np
 #Module used: math | pynput
 
 #The main menu of the program
 def main_program():
-    print ('Math Calculator v0.6')
-    print ('Press 0 for exit')
-    print ("Press 1 for search")
-    print ('Press 2 for the geometry section')
-    print ('Press 3 for the algebra section')
-    print ('Press 4 for help')
+    print ('''
+Math Calculator v0.6
+Press 0 for exit
+Press 1 for search
+Press 2 for the geometry section
+Press 3 for the algebra section
+Press 4 for advanced mathematics section
+Press 5 for help''')
 #    try:
     section_selection = int(input("Type your selection: "))
 #    print ("Your selection is:",section_selection,'\n')
@@ -25,6 +27,8 @@ def main_program():
     elif section_selection == 3:
         algebra_section()
     elif section_selection == 4:
+        advanced_mathematics_section()
+    elif section_selection == 5:
         help() 
 #    except:
 #        print ("\nUnknown error, please check if you enter the correct input as requested!\n")
@@ -111,7 +115,7 @@ def pythagorean_theorem(side_selection):
     if side_selection == 2: 
         hypotenuse_length_1 = float(input("Type the length of the hypotenuse: "))
         adjacent_length_2 = float(input("Type the length of the other hypotenuse: "))
-        hypotenuse_length_1 = pow((pow(hypotenuse_length_1,2) - pow(adjacent_length_2)),0.5)
+        hypotenuse_length_1 = pow((pow(hypotenuse_length_1,2) - pow(adjacent_length_2,2)),0.5)
         print("This is the length of the other adjacent side:",hypotenuse_length_1)
         return_to_menu()
         
@@ -214,13 +218,44 @@ def quadratic_function_generator():
     Vertex_Y_Value = (a * pow(Vertex_X_Value,2)) + (b * Vertex_X_Value) + c
     print ("Vertex location: ",Vertex_X_Value,",",Vertex_Y_Value)
     return_to_menu()
+    
+#Problem solver for the advanced mathematics section
+def matrix_multiplier ():
+    row_of_first_matrix = int(input("Please enter the column of the first array: "))
+    column_of_first_matrix = int(input("Please enter the column of the first array: "))
+    print("\nEnter the elements in your first matrix from upper left to lower right")
+    list_number_of_first_matrix = row_of_first_matrix * column_of_first_matrix
+    array_mirror_of_first_matrix = [1.1145141919810]
+    for i in range(2,list_number_of_first_matrix + 2):
+        array_mirror_of_first_matrix_temp = float(input("Please enter the %d element in your matrix: " %(i - 1)))
+        array_mirror_of_first_matrix.insert (i,array_mirror_of_first_matrix_temp)
+    del array_mirror_of_first_matrix[0]
+    np_array_mirror_of_first_matrix = np.asarray(array_mirror_of_first_matrix)
+    first_matrix = np_array_mirror_of_first_matrix.reshape(column_of_first_matrix,row_of_first_matrix)
+    print("This is your first matrix",first_matrix)
+    #==========★==========#
+    row_of_second_matrix = int(input("Please enter the row of the second array: "))
+    column_of_second_matrix = int(input("Please enter the column of the second array: "))
+    if column_of_first_matrix != row_of_second_matrix:
+        print("The column of the first matrix needs to equal the row of the second matrix")
+        return_to_menu()
+    list_number_of_second_matrix = row_of_second_matrix * column_of_second_matrix
+    array_mirror_of_second_matrix = [1.1145141919810]
+    for i in range(2,list_number_of_second_matrix + 2):
+        array_mirror_of_second_matrix_temp = float(input("Please enter the %d element in your matrix: " %(i - 1)))
+        array_mirror_of_second_matrix.insert (i,array_mirror_of_second_matrix_temp)
+    del array_mirror_of_second_matrix[0]
+    np_array_mirror_of_second_matrix = np.asarray(array_mirror_of_second_matrix)
+    second_matrix = np_array_mirror_of_second_matrix.reshape(row_of_second_matrix,column_of_second_matrix)
+    print("This is your second matrix",second_matrix)
 
 #Sections
 def geometry_section ():
-    print ('Geometry Section: ')
-    print ('Press 0 to return')
-    print ('Press 1 for Pythagorean theorem')
-    print ('Press 2 for Triangle area from three sides')
+    print ('''
+Geometry Section: 
+Press 0 to return
+Press 1 for Pythagorean theorem
+Press 2 for Triangle area from three sides''')
     problem_selection = int(input("Type your selection: "))
     print ("Your selection is:",problem_selection,'\n')
     if problem_selection == 0:
@@ -234,15 +269,28 @@ def geometry_section ():
     elif problem_selection == 2:
         print ('Triangle area from three sides:')
         triangle_area_from_three_sides()
+        
+def advanced_mathematics_section ():
+    print('''
+Advanced mathematics section:
+Press 0 to return
+Press 1 for Matrix multiplier''')
+    problem_selection = int(input("Type your selection: "))
+    print ("Your selection is:",problem_selection,'\n')
+    if problem_selection == 0:
+        main_program()
+    elif problem_selection == 1:
+        matrix_multiplier()
 
 def algebra_section ():
-    print ('Algebra Section:')
-    print ('Press 0 to return')
-    print ('Press 1 for linear function generator')
-    print ('Press 2 for arithmetic progression calculator')
-    print ('Press 3 for quadratic equation calculator')
-    print ('Press 4 for linear function rotation')
-    print ('Press 5 for quadratic function generator')
+    print ('''
+Algebra Section:
+Press 0 to return
+Press 1 for linear function generator
+Press 2 for arithmetic progression calculator
+Press 3 for quadratic equation calculator
+Press 4 for linear function rotation
+Press 5 for quadratic function generator''')
     problem_selection = int(input("Type your selection: "))
     print ("Your selection is:",problem_selection,'\n')
     if problem_selection == 0:
@@ -273,7 +321,8 @@ all_equations = [
      {'Equation name': 'Quadratic equation calculator','Section': 'Algebra', 'Serial number': 2},
      {'Equation name': 'Arithmetic progression calculator','Section': 'Algebra', 'Serial number': 3},
      {'Equation name': 'Linear function rotation', 'Section': 'Algebra', 'Serial number': 4},
-     {'Equation name': 'Quadratic function generator', 'Section': 'Algebra', 'Serial number': 5}
+     {'Equation name': 'Quadratic function generator', 'Section': 'Algebra', 'Serial number': 5},
+     {'Equation name': 'Matrix multiplier', 'Section': 'Advanced mathematics', 'Serial number': 1}
 ]
 menu_number = {'Geometry section': 1 , 'Algebra section': 2}
 #Submenu Number : 
