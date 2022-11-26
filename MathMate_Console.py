@@ -248,6 +248,30 @@ def matrix_multiplier ():
     np_array_mirror_of_second_matrix = np.asarray(array_mirror_of_second_matrix)
     second_matrix = np_array_mirror_of_second_matrix.reshape(row_of_second_matrix,column_of_second_matrix)
     print("This is your second matrix",second_matrix)
+    #==========★==========#
+    array_mirror_of_multiplied_matrix = [1.1145141919810]
+    list_number_of_multiplied_matrix = row_of_first_matrix * column_of_second_matrix
+    for i in range (1,list_number_of_multiplied_matrix):
+        array_mirror_of_multiplied_matrix.insert (i,0)
+    np_array_mirror_of_multiplied_matrix = np.asarray(array_mirror_of_multiplied_matrix)
+    multiplied_matrix = np_array_mirror_of_multiplied_matrix.reshape(row_of_first_matrix,column_of_second_matrix)
+    print(row_of_first_matrix,column_of_second_matrix)
+    for row_location_of_multiplied_matrix in range(0,row_of_first_matrix):
+        for column_location_of_multiplied_matrix in range(0,column_of_second_matrix):
+            temp_value_in_grid = 0
+            print('#', row_location_of_multiplied_matrix,column_location_of_multiplied_matrix)
+            for i in range(0,column_of_first_matrix):
+                a=1
+                #temp_value_1 = first_matrix[column_location_of_multiplied_matrix,i]
+                #print("#",row_location_of_multiplied_matrix,column_location_of_multiplied_matrix,i)
+                #temp_value_2 = second_matrix[i,row_location_of_multiplied_matrix]
+                #temp_value_in_grid = temp_value_in_grid + temp_value_1 * temp_value_2
+                # print('*',i)
+                # print('<',column_location_of_multiplied_matrix,i)
+                # print('>',i,row_location_of_multiplied_matrix)
+                #print('#',temp_value_1,temp_value_2,temp_value_in_grid)
+            #print(row_location_of_multiplied_matrix,column_location_of_multiplied_matrix,temp_value_in_grid)
+            #multiplied_matrix[row_location_of_multiplied_matrix-1,column_location_of_multiplied_matrix-1] = temp_value_in_grid
 
 #Sections
 def geometry_section ():
