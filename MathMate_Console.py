@@ -331,12 +331,13 @@ Press 5 for quadratic function generator''')
         quadratic_function_generator()
       
 #On Startup
-print ('''
+startup_image =  r'''
  __  __       _   _     __  __       _       
 |  \/  | __ _| |_| |__ |  \/  | __ _| |_ ___ 
-| |\/| |/ _` | __| '_ \| |\/| |/ _` | __/ _ \\
+| |\/| |/ _` | __| '_ \| |\/| |/ _` | __/ _ \
 | |  | | (_| | |_| | | | |  | | (_| | ||  __/
-|_|  |_|\__,_|\__|_| |_|_|  |_|\__,_|\__\___|\n''')
+|_|  |_|\__,_|\__|_| |_|_|  |_|\__,_|\__\___|'''
+print (startup_image)
 #Add a comma behind each dictionary (except the last one) and ' is not the same as ‘！！！
 all_equations = [
      {'Equation name': 'Pythagorean theorem','Section': 'Geometry','Serial number': 1},
