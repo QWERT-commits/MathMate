@@ -221,7 +221,7 @@ def quadratic_function_generator():
     
 #Problem solver for the advanced mathematics section
 def matrix_multiplier ():
-    row_of_first_matrix = int(input("Please enter the column of the first array: "))
+    row_of_first_matrix = int(input("Please enter the row of the first array: "))
     column_of_first_matrix = int(input("Please enter the column of the first array: "))
     print("\nEnter the elements in your first matrix from upper left to lower right")
     list_number_of_first_matrix = row_of_first_matrix * column_of_first_matrix
@@ -236,7 +236,8 @@ def matrix_multiplier ():
     #==========★==========#
     row_of_second_matrix = int(input("Please enter the row of the second array: "))
     column_of_second_matrix = int(input("Please enter the column of the second array: "))
-    if column_of_first_matrix != row_of_second_matrix:
+    if row_of_first_matrix != column_of_second_matrix:
+        print(row_of_first_matrix,column_of_second_matrix)
         print("The column of the first matrix needs to equal the row of the second matrix")
         return_to_menu()
     list_number_of_second_matrix = row_of_second_matrix * column_of_second_matrix
@@ -246,7 +247,7 @@ def matrix_multiplier ():
         array_mirror_of_second_matrix.insert (i,array_mirror_of_second_matrix_temp)
     del array_mirror_of_second_matrix[0]
     np_array_mirror_of_second_matrix = np.asarray(array_mirror_of_second_matrix)
-    second_matrix = np_array_mirror_of_second_matrix.reshape(row_of_second_matrix,column_of_second_matrix)
+    second_matrix = np_array_mirror_of_second_matrix.reshape(column_of_second_matrix,row_of_second_matrix)
     print("This is your second matrix",second_matrix)
     #==========★==========#
     array_mirror_of_multiplied_matrix = [1.1145141919810]
@@ -256,19 +257,18 @@ def matrix_multiplier ():
     np_array_mirror_of_multiplied_matrix = np.asarray(array_mirror_of_multiplied_matrix)
     multiplied_matrix = np_array_mirror_of_multiplied_matrix.reshape(row_of_first_matrix,column_of_second_matrix)
     print(row_of_first_matrix,column_of_second_matrix)
-    for row_location_of_multiplied_matrix in range(0,row_of_first_matrix):
-        for column_location_of_multiplied_matrix in range(0,column_of_second_matrix):
+    for row_location_of_multiplied_matrix in range(0,column_of_first_matrix):
+        for column_location_of_multiplied_matrix in range(0,row_of_second_matrix):
             temp_value_in_grid = 0
             print('#', row_location_of_multiplied_matrix,column_location_of_multiplied_matrix)
-            for i in range(0,column_of_first_matrix):
-                a=1
-                #temp_value_1 = first_matrix[column_location_of_multiplied_matrix,i]
+            for i in range(0,row_of_first_matrix):
+                print('*',i)
+                print('<',row_location_of_multiplied_matrix,i)
+                print('>',i,column_location_of_multiplied_matrix)
+                temp_value_1 = first_matrix[row_location_of_multiplied_matrix,i]
                 #print("#",row_location_of_multiplied_matrix,column_location_of_multiplied_matrix,i)
-                #temp_value_2 = second_matrix[i,row_location_of_multiplied_matrix]
+                temp_value_2 = second_matrix[i,row_location_of_multiplied_matrix]
                 #temp_value_in_grid = temp_value_in_grid + temp_value_1 * temp_value_2
-                # print('*',i)
-                # print('<',column_location_of_multiplied_matrix,i)
-                # print('>',i,row_location_of_multiplied_matrix)
                 #print('#',temp_value_1,temp_value_2,temp_value_in_grid)
             #print(row_location_of_multiplied_matrix,column_location_of_multiplied_matrix,temp_value_in_grid)
             #multiplied_matrix[row_location_of_multiplied_matrix-1,column_location_of_multiplied_matrix-1] = temp_value_in_grid
