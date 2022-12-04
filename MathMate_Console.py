@@ -6,7 +6,7 @@ import numpy as np
 #The main menu of the program
 def main_program():
     print ('''
-Math Calculator v0.6
+Math Calculator v0.73
 Press 0 for exit
 Press 1 for search
 Press 2 for the geometry section
@@ -82,11 +82,13 @@ def help():
 def return_to_menu():
     global actual_menu_number
     actual_menu_number = menu_number_save - 1
-    print('Execution completed, returning to',get_key_from_value(actual_menu_number),'... \n')
+    print('Execution completed, returning to',get_key_from_value(actual_menu_number),'......')
     if menu_number_save == 2:
         geometry_section()
     elif menu_number_save == 3:
         algebra_section()
+    elif menu_number_save == 4:
+        advanced_mathematics_section()
     else:
         main_program()
 
@@ -232,10 +234,11 @@ def matrix_multiplier ():
     del array_mirror_of_first_matrix[0]
     np_array_mirror_of_first_matrix = np.asarray(array_mirror_of_first_matrix)
     first_matrix = np_array_mirror_of_first_matrix.reshape(column_of_first_matrix,row_of_first_matrix)
-    print("This is your first matrix",first_matrix)
+    print("This is your first matrix: \n",first_matrix,"\n")
     #==========★==========#
     row_of_second_matrix = int(input("Please enter the row of the second array: "))
     column_of_second_matrix = int(input("Please enter the column of the second array: "))
+    print(" ")
     if row_of_first_matrix != column_of_second_matrix:
         print(row_of_first_matrix,column_of_second_matrix)
         print("The column of the first matrix needs to equal the row of the second matrix")
@@ -248,7 +251,7 @@ def matrix_multiplier ():
     del array_mirror_of_second_matrix[0]
     np_array_mirror_of_second_matrix = np.asarray(array_mirror_of_second_matrix)
     second_matrix = np_array_mirror_of_second_matrix.reshape(column_of_second_matrix,row_of_second_matrix)
-    print("This is your second matrix",second_matrix)
+    print("This is your second matrix: \n",second_matrix,"\n")
     #==========★==========#
     array_mirror_of_multiplied_matrix = [1.1145141919810]
     list_number_of_multiplied_matrix = column_of_first_matrix * row_of_second_matrix
@@ -257,22 +260,17 @@ def matrix_multiplier ():
     del array_mirror_of_multiplied_matrix[0]
     np_array_mirror_of_multiplied_matrix = np.asarray(array_mirror_of_multiplied_matrix)
     multiplied_matrix = np_array_mirror_of_multiplied_matrix.reshape(column_of_first_matrix,row_of_second_matrix)
-    print(row_of_first_matrix,column_of_second_matrix)
     for row_location_of_multiplied_matrix in range(0,column_of_first_matrix):
         for column_location_of_multiplied_matrix in range(0,row_of_second_matrix):
             temp_value_in_grid = 0
-            print('#', column_location_of_multiplied_matrix,row_location_of_multiplied_matrix)
             for i in range(0,row_of_first_matrix):
-                # print('*',i)
-                # print('<',row_location_of_multiplied_matrix,i)
-                # print('>',i,column_location_of_multiplied_matrix)
                 temp_value_1 = first_matrix[row_location_of_multiplied_matrix,i]
                 temp_value_2 = second_matrix[i,column_location_of_multiplied_matrix]
-                #print(temp_value_1,temp_value_2,temp_value_in_grid)
                 temp_value_in_grid = temp_value_in_grid + temp_value_1 * temp_value_2
-            print(temp_value_in_grid)
             multiplied_matrix[row_location_of_multiplied_matrix,column_location_of_multiplied_matrix] = temp_value_in_grid
+    print("This is the multiplied matrix: ")
     print(multiplied_matrix)
+    return_to_menu()
 
 #Sections
 def geometry_section ():
@@ -350,7 +348,7 @@ all_equations = [
      {'Equation name': 'Quadratic function generator', 'Section': 'Algebra', 'Serial number': 5},
      {'Equation name': 'Matrix multiplier', 'Section': 'Advanced mathematics', 'Serial number': 1}
 ]
-menu_number = {'Geometry section': 1 , 'Algebra section': 2}
+menu_number = {'Geometry section':1, 'Algebra section':2, 'Advanced mathematics section':3}
 #Submenu Number : 
 current_menu = 0
 current_submenu = 0
