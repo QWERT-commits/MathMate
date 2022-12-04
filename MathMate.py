@@ -6,7 +6,7 @@ import numpy as np
 #The main menu of the program
 def main_program():
     print ('''
-Math Calculator v0.73
+Math Calculator v0.7.3
 Press 0 for exit
 Press 1 for search
 Press 2 for the geometry section
