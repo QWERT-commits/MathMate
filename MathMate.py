@@ -6,7 +6,7 @@ import numpy as np
 #The main menu of the program
 def main_program():
     print ('''
-Math Calculator v0.7.3
+Math Calculator v0.7.４
 Press 0 for exit
 Press 1 for search
 Press 2 for the geometry section
@@ -223,6 +223,7 @@ def quadratic_function_generator():
     
 #Problem solver for the advanced mathematics section
 def matrix_multiplier ():
+    print ('Matrix Multiplier')
     row_of_first_matrix = int(input("Please enter the row of the first array: "))
     column_of_first_matrix = int(input("Please enter the column of the first array: "))
     print("\nEnter the elements in your first matrix from upper left to lower right")
@@ -271,6 +272,62 @@ def matrix_multiplier ():
     print("This is the multiplied matrix: ")
     print(multiplied_matrix)
     return_to_menu()
+    
+def matrix_property():
+    print("3*3 Matrix property")
+    row_of_first_matrix = 3
+    column_of_first_matrix = 3
+    print("\nEnter the elements in your first matrix from upper left to lower right")
+    list_number_of_first_matrix = row_of_first_matrix * column_of_first_matrix
+    array_mirror_of_first_matrix = [1.1145141919810]
+    for i in range(2,list_number_of_first_matrix + 2):
+        array_mirror_of_first_matrix_temp = float(input("Please enter the %d element in your matrix: " %(i - 1)))
+        array_mirror_of_first_matrix.insert (i,array_mirror_of_first_matrix_temp)
+    del array_mirror_of_first_matrix[0]
+    np_array_mirror_of_first_matrix = np.asarray(array_mirror_of_first_matrix)
+    first_matrix = np_array_mirror_of_first_matrix.reshape(column_of_first_matrix,row_of_first_matrix)
+    #-------------------------------------#
+    a = first_matrix[0,0]
+    b = first_matrix[0,1]
+    c = first_matrix[0,2]
+    d = first_matrix[1,0]
+    e = first_matrix[1,1]
+    f = first_matrix[1,2]
+    g = first_matrix[2,0]
+    h = first_matrix[2,1]
+    i = first_matrix[2,2]
+    array_temp = [
+        e*i-f*h,
+        c*h-i*b,
+        b*f-c*e,
+        f*g-d*i,  
+        a*i-c*g,
+        c*d-a*f, 
+        d*h-g*e,
+        b*g-a*h,
+        a*e-d*b
+    ]
+    #np_array_mirror_of_first_matrix = np.asarray(array_mirror_of_first_matrix)
+    np_array_temp = np.asarray(array_temp)
+    adjugate_matrix = np_array_temp.reshape(3,3)
+    determinant = a*(e*i-h*f) - b*(d*i-g*f) + c*(d*h-g*e)
+    if determinant == 0:
+        print("\nThis matrix does not have a inverse\n")
+        return_to_menu()
+    array_inverse_temp = [1.14]
+    for i in range(0,9):
+        number_temp = array_temp[i]/determinant
+        array_inverse_temp.insert (i+1,number_temp)
+    del array_inverse_temp[0]
+    np_array_inverse_temp = np.asarray(array_inverse_temp)
+    array_inverse = np_array_inverse_temp.reshape(3,3)
+    #-------------------------------------#
+    print("\nThis is your matrix: \n",first_matrix,"\n")
+    print("This is its adjugate matrix: \n", adjugate_matrix, "\n")
+    print("This is its inverse matrix: \n", array_inverse, "\n")
+    print("This is its determinant: ", determinant, "\n")
+    return_to_menu()
+
 
 #Sections
 def geometry_section ():
@@ -297,13 +354,16 @@ def advanced_mathematics_section ():
     print('''
 Advanced mathematics section:
 Press 0 to return
-Press 1 for Matrix multiplier''')
+Press 1 for Matrix multiplier
+Press 2 for 3*3 Matrix property''')
     problem_selection = int(input("Type your selection: "))
     print ("Your selection is:",problem_selection,'\n')
     if problem_selection == 0:
         main_program()
     elif problem_selection == 1:
         matrix_multiplier()
+    elif problem_selection ==2:
+        matrix_property()
 
 def algebra_section ():
     print ('''
@@ -346,7 +406,8 @@ all_equations = [
      {'Equation name': 'Arithmetic progression calculator','Section': 'Algebra', 'Serial number': 3},
      {'Equation name': 'Linear function rotation', 'Section': 'Algebra', 'Serial number': 4},
      {'Equation name': 'Quadratic function generator', 'Section': 'Algebra', 'Serial number': 5},
-     {'Equation name': 'Matrix multiplier', 'Section': 'Advanced mathematics', 'Serial number': 1}
+     {'Equation name': 'Matrix multiplier', 'Section': 'Advanced mathematics', 'Serial number': 1},
+     {'Equation name': '3*3 Matrix Property', 'Section': 'Advanced mathematics', 'Serial number': 2}
 ]
 menu_number = {'Geometry section':1, 'Algebra section':2, 'Advanced mathematics section':3}
 #Submenu Number : 
