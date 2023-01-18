@@ -12,7 +12,8 @@ Press 1 for search
 Press 2 for the geometry section
 Press 3 for the algebra section
 Press 4 for advanced mathematics section
-Press 5 for help''')
+Press 5 for others section
+Press 6 for help''')
 #    try:
     section_selection = int(input("Type your selection: "))
 #    print ("Your selection is:",section_selection,'\n')
@@ -29,6 +30,8 @@ Press 5 for help''')
     elif section_selection == 4:
         advanced_mathematics_section()
     elif section_selection == 5:
+        others_section()
+    elif section_selection == 6:
         help() 
 #    except:
 #        print ("\nUnknown error, please check if you enter the correct input as requested!\n")
@@ -89,6 +92,8 @@ def return_to_menu():
         algebra_section()
     elif menu_number_save == 4:
         advanced_mathematics_section()
+    elif menu_number_save == 5:
+        others_section()
     else:
         main_program()
 
@@ -328,6 +333,21 @@ def matrix_property():
     print("This is its determinant: ", determinant, "\n")
     return_to_menu()
 
+#Problem solver for the others section
+
+def fibonacci_sequence_calculator():
+    location_of_term = int(input("Input the location of term(n) in fibonacci sequence: "))
+    fibonacci_sequence(location_of_term)
+    print ("This is the nth term in fibonacci sequence: ", fibonacci_sequence(location_of_term))
+    return_to_menu()
+    
+    #--Subfunction for calculator above:
+def fibonacci_sequence(location_of_ter):
+    if location_of_ter == 1 or location_of_ter == 2:
+        return 1
+    sum_of_previous_term = fibonacci_sequence(location_of_ter-1)
+    sum_of_previous_second_term = fibonacci_sequence(location_of_ter-2)
+    return sum_of_previous_term + sum_of_previous_second_term
 
 #Sections
 def geometry_section ():
@@ -388,6 +408,19 @@ Press 5 for quadratic function generator''')
         linear_function_rotation()
     elif problem_selection == 5:
         quadratic_function_generator()
+        
+def others_section():
+    print('''
+Others Section:
+Press 0 to return
+Press 1 for fibonacci sequence calculator
+          ''')
+    problem_selection = int(input("Type your selection: "))
+    print ("Your selection is:",problem_selection,'\n')
+    if problem_selection == 0:
+        main_program()
+    elif problem_selection == 1:
+        fibonacci_sequence_calculator()
       
 #On Startup
 startup_image =  r'''
@@ -407,9 +440,10 @@ all_equations = [
      {'Equation name': 'Linear function rotation', 'Section': 'Algebra', 'Serial number': 4},
      {'Equation name': 'Quadratic function generator', 'Section': 'Algebra', 'Serial number': 5},
      {'Equation name': 'Matrix multiplier', 'Section': 'Advanced mathematics', 'Serial number': 1},
-     {'Equation name': '3*3 Matrix Property', 'Section': 'Advanced mathematics', 'Serial number': 2}
+     {'Equation name': '3*3 Matrix Property', 'Section': 'Advanced mathematics', 'Serial number': 2},
+     {'Equation name': 'Fibonacci sequence calculator', 'Section': 'Others', 'Serial number': 1}
 ]
-menu_number = {'Geometry section':1, 'Algebra section':2, 'Advanced mathematics section':3}
+menu_number = {'Geometry section':1, 'Algebra section':2, 'Advanced mathematics section':3, 'Others section':4}
 #Submenu Number : 
 current_menu = 0
 current_submenu = 0
